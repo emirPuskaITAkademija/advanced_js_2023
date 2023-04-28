@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button onclick="showCars()">Prikazi sve modele vozila koje osoba posjeduje</button>
+    <p id="specialParagraph"></p>
+    <script>
+      const person = {
+        name: "Saša",
+        surname: "Bogdanović",
+        age: 33,
+        eyeColor: "brown",
+        cars: [
+          { marka: "Ford", models: ["Fiesta", "Focus", "Mustang"] },
+          { marka: "BMW", models: ["320", "X3", "X5"] },
+          { marka: "Ferari", models: ["Spider 1", "Spider 2", "Spider 3"] },
+          { marka: "Mazda", models: ["M5", "RX5", "RX7"] },
+        ],
+      };
+
+      function showCars(){
+        let carArray = person.cars;
+        let contentOfParagraf ="";
+        for(let i in carArray){
+            //i indeks elementa unutar niza -> i = 0, 1, 2, 3
+            let car = carArray[i];
+            contentOfParagraf= contentOfParagraf + "<h2>"+car.marka+"</h2>";
+            let carModelArray = car.models;
+            for(let j in carModelArray){//j= 0, 1, 2
+                let carModel = carModelArray[j];
+                contentOfParagraf=contentOfParagraf+carModel+"<br>";
+            }
+        }
+        document.getElementById("specialParagraph").innerHTML= contentOfParagraf;
+      }
+    </script>
+  </body>
+</html>

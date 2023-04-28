@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <body>
+      <p id="paragrafKlasa"></p>
+      <button id="dugme" onclick="prikazi()">Dodaj Osobu</button>
+    </body>
+    <script>
+      class Person {
+        constructor(name, surname, id, birthday) {
+          this.name = name;
+          this.surname = surname;
+          this.id = id;
+          this.birthday = birthday;
+        }
+        prikazi() {
+          let result =
+            this.name +
+            " " +
+            this.surname +
+            " " +
+            this.id +
+            " born on: " +
+            this.birthday;
+          return result;
+        }
+      }
+      function prikazi() {
+        let adi = new Person("Adi", "Ibrahimagić", 121212121, "16th June");
+        let jordan = new Person("Michael", "Jordan", 13131313, "25th May");
+        let kobe = new Person("Kobe", "Bryant", 141414141, "8th April");
+        let paragraf = document.getElementById("paragrafKlasa");
+        let sadrzaj =
+          adi.prikazi() + "," + jordan.prikazi() + "," + kobe.prikazi();
+        paragraf.innerHTML = sadrzaj;
+      }
+    </script>
+  </body>
+</html>

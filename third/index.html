@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML dokument</title>
+  </head>
+
+  <body>
+    <button onclick="prikaziPodatke()">Prikazi podatke</button>
+    <p id="demo"></p>
+    <script>
+      //blueprint Class
+      function Person(n, s, a, e) {
+        this.name = n;
+        this.surname = s;
+        this.age = a;
+        this.eyeColor = e;
+        this.fullName = function () {
+          let fullName = this.name + " " + this.surname;
+          return fullName;
+        };
+        this.changeSurname = function (lastName) {
+          this.surname = lastName;
+        };
+        this.changeName = function (firstName) {
+          this.name = firstName;
+        };
+      }
+
+      Person.prototype.favouriteClub = "AC Milan";
+      Person.prototype.changeClub = function (anotherClub) {
+        this.favouriteClub = anotherClub;
+      };
+
+      let ibro = new Person("Ibrahim", "Memišagić", 33, "black");
+      let saša = new Person("Saša", "Bogdanović", 23, "green");
+      let evlis = new Person("Elvis", "Hodžić", 25, "blue");
+      saša.favouriteClub = "Inter Milan";
+
+      function prikaziPodatke() {
+        evlis.changeClub("Arsenal");
+        document.getElementById("demo").innerHTML =
+          evlis.fullName() + " " + evlis.favouriteClub;
+      }
+    </script>
+  </body>
+</html>

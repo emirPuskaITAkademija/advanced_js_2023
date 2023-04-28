@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Demo KLASA</h1>
+    <p>
+      Kreirajte tri omiljene osobe iz učionice i njihove informacije ubacite u
+      paragraf ispod
+    </p>
+    <p>
+        (paragraf sa informacijama napunite nakon što neko klikne na dugmić)
+    </p>
+    <p>Klasa po čijem šablonu kreirate osobe treba da ima 4 polja
+        <ol>
+            <li>name</li>
+            <li>surname</li>
+            <li>nin(JBMG)</li>
+            <li>birthday</li>
+        </ol>
+    </p>
+    <button onclick="showFavourites()">Prikaži tri omiljene osobe</button>
+    <p id="omiljeni"></p>
+    <script>
+        function showFavourites(){
+            let person1 = new Person("Tarik", "Kuldija", "12112", 1988);
+            let person2 = new Person("Ajka", "Mahumtović", "121212", 1999);
+            let person3 = new Person("Marija", "Jokić", "1213132", 2009);
+            let omiljeniParagrafHtmlElement = document.getElementById("omiljeni");
+            let sadrzaj = person1.predstaviSe() +" , " + person2.predstaviSe() + ", " + person3.predstaviSe();
+            omiljeniParagrafHtmlElement.innerHTML = sadrzaj;
+        }
+
+        class Person{
+            constructor(n, s, nin, b){
+                this.name = n;
+                this.surname = s;
+                this.nin = nin; 
+                this.birthday = b;
+            }
+
+            predstaviSe(){
+                let starost = this.age();
+                return this.name +" " + this.surname+" age: " + starost;
+            }
+
+            age(){
+                let trenutnoVrijeme = new Date();
+                let trenutnuGodina = trenutnoVrijeme.getFullYear();
+                let starost = trenutnuGodina - this.birthday;
+                return starost;
+            }
+        }
+    </script>
+  </body>
+</html>

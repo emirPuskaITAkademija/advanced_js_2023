@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+  </head>
+  <body>
+    <p id="personaParagraf"></p>
+    <button onclick="showPersonInParagraf()">
+      Prikaži polja person objekta u paragrafu
+    </button>
+    <button onclick="addPropertyToPerson()">Dodaj omiljeni sport</button>
+    <button onclick="deleteEyeColorOfThePerson()">Ukloni boju očiju</button>
+  </body>
+  <script>
+    const person = {
+      name: "Saša",
+      surname: "Bogdanović",
+      age: 24,
+      eyeColor: "brown",
+      auto: {
+        boja: "sivi",
+        marka: "Ferari",
+        starost: 12,
+      },
+    };
+    //
+    function showPersonInParagraf() {
+      //name->Saša, surname->Bogdanović,age->24, eyeColor->brown, auto -> object Object
+      //
+      let desiredParagrafContent = "";
+      for (let fieldName in person) {
+        let fieldValue = person[fieldName];
+        if (typeof fieldValue == "object") {
+          let specialObjectContent="";
+          for (let autoFieldName in fieldValue) {
+            let autoFieldValue = fieldValue[autoFieldName];
+            specialObjectContent=specialObjectContent+" "+ autoFieldValue;
+          }
+          let specialFormatiraniContent = fieldName+" -> " + specialObjectContent;
+          desiredParagrafContent = desiredParagrafContent + specialFormatiraniContent + " , ";
+        } else {
+          let formatiraniOpis = fieldName + " -> " + fieldValue;
+          desiredParagrafContent = desiredParagrafContent + formatiraniOpis + " , ";
+        }
+      }
+
+      let desiredParagraf = document.getElementById("personaParagraf");
+      desiredParagraf.innerHTML = desiredParagrafContent;
+    }
+
+    function addPropertyToPerson() {
+      person.favouriteSport = "Balet";
+      showPersonInParagraf(); //Saša Bogdanović 24 brown Balet
+    }
+
+    function deleteEyeColorOfThePerson() {
+      //delete person.eyeColor;
+      delete person["eyeColor"];
+      showPersonInParagraf();
+    }
+  </script>
+</html>

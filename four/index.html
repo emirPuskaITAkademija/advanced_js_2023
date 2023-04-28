@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Demonstracija upotrebe klase</h1>
+    <button onclick="dodajIbrahima()">Dodaj Ibrahima na spisak</button>
+    <p id="ibrahimovParagraf"></p>
+    <script>
+      function dodajIbrahima() {
+        let person = new Student("Ibrahim", "Memišagić", 23, "121313");
+        let ibrahimovParagraf = document.getElementById("ibrahimovParagraf");
+        let stariSadržaj = ibrahimovParagraf.innerHTML;
+        ibrahimovParagraf.innerHTML = stariSadržaj + ",  " + person.fullName();
+      }
+
+      class Person {
+        constructor(name, surname, age) {
+          this.name = name;
+          this.surname = surname;
+          this.age = age;
+        }
+
+        fullName() {
+          return this.name + " " + this.surname;
+        }
+      }
+
+      class Student extends Person {
+        constructor(name, surname, age, indexNumber) {
+          super(name, surname, age);
+          this.indexNumber = indexNumber;
+        }
+
+    
+      }
+
+      class Teacher extends Person {
+        constructor(name, surname, age, salary) {
+          super(name, surname, age);
+          this.salary = salary;
+        }
+      }
+    </script>
+  </body>
+</html>
