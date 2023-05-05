@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Redoslijed izvršavanja JS funkcija</h1>
+    <p>
+        <ul>
+            Funkcije se izvršavaju 
+            <li>onako kako su DEFINIRANE</li>
+            <li><b>onako kako su POZVANE</b></li>
+        </ul>
+    </p>
+    <p id="resultirajuciParagraf"></p>
+    <h2 id="resultHeading"></h2>
+    <script>
+        function prikaziUParagrafu(value){
+            let paragraf = document.getElementById("resultirajuciParagraf");
+            paragraf.innerHTML=value;
+        }
+
+        function sum(broj1, broj2){
+            let suma = broj1 + broj2;
+            prikaziUHeading(suma);
+        }
+    
+        function prikaziUHeading(value){
+            let heading = document.getElementById("resultHeading");
+            heading.innerHTML=value;
+        }
+
+        sum(23, 34);
+        sum(23, 34);
+        /**
+         *  Problem sa ovim pristupom. Pozivam dvije funkcije
+         * 
+        //let result = sum(23, 34);
+        //displayValue(result);
+        **/
+
+        /**
+         * Problem sa ovim pristupom. Funkcija sum mora pozvati uvijek displayValue
+        sum(23, 34);
+
+        **/
+
+        /**
+         *
+         * CALLBACK
+           **/
+    </script>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>JS Callback na stari i novi način</h1>
+    <ol>
+        <li>STARI način - kreiram funkciju i referenciram se na nju</li>
+        <li>NOVI način - kreiram funkciju ali preko ARROW operatora</li>
+    </ol>
+    <p id="sumParagraf"></p>
+    <button onclick="prikaziBroj()">Prikazi REZULTAT</button>
+    <script>
+           
+               function prikaziBroj(){
+                  const nizBrojeva = [23, 34, 12, 13,  4, 7, -123, -23];
+                  const suma = magicnijiSum(nizBrojeva, broj=>broj%2!=0 && broj < 0);
+                  document.getElementById("sumParagraf").innerHTML = suma;
+               }
+               
+               function magicnijiSum(brojevi, callbackTest){
+                  //izbacujem one koji su pali na testu
+                  // a tek onda radim na svakim koji je ostao u nizu sumiranje
+                  return brojevi
+                         .filter(callbackTest)
+                         .reduce(sumaDvaBroja, 0);
+               }
+
+               function sumaDvaBroja(n1, n2){
+                return n1+n2;
+               }
+
+               function magicSum(brojevi, callbackTest){
+                   let sum = 0;
+                   for(const broj of brojevi){
+                      if(callbackTest(broj)){
+                         sum = sum + broj;
+                      }
+                   }
+                   return sum; 
+               }
+
+               /**
+               function isNegativeOddNumber(broj){
+                 return broj < 0 && (broj %2 != 0);
+               }
+
+               function isPositiveOddNumber(broj){
+                 return broj > 0 && (broj %2 != 0);
+               }
+
+               function isPositiveNumber(broj){
+                 return broj > 0;
+               }
+
+               function isNegative(broj){
+                 return broj <0 ;
+               } **/
+
+               /**
+               function sum(brojevi){
+                  let sum = 0;
+                  for(const broj of brojevi){
+                     sum = sum + broj;
+                  }
+                  return sum;
+               }
+
+               function sumirajPozitivne(brojevi){
+                  let sum = 0;
+                  for(const broj of brojevi){
+                    if(broj >0){
+                        sum = sum + broj;
+                    }
+                  }
+                  return sum;
+               }
+
+               function sumirajNegativne(brojevi){
+                  let sum = 0;
+                  for(const broj of brojevi){
+                    if(broj <0){
+                     sum = sum + broj;
+                    }
+                  }
+                  return sum;
+               }
+
+               function sumirajPozitivneParne(brojevi){
+                  let sum = 0;
+                  for(const broj of brojevi){
+                    if(broj >0 && (broj % 2 == 0)){
+                        sum = sum + broj;
+                    }
+                  }
+                  return sum;
+               }
+
+               function sumirajNegativneParne(brojevi){
+                  let sum = 0;
+                  for(const broj of brojevi){
+                    if(broj <0 && (broj % 2 == 0)){
+                     sum = sum + broj;
+                    }
+                  }
+                  return sum;
+               }
+
+               function sumirajNegativneNeparne(brojevi){
+                  let sum = 0;
+                  for(const broj of brojevi){
+                    if(broj <0 && (broj % 2 != 0)){
+                     sum = sum + broj;
+                    }
+                  }
+                  return sum;
+               }
+
+               **/
+    </script>
+</body>
+</html>

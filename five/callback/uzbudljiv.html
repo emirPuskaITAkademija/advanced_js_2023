@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>JS Callback i ARROW function</h1>
+    <p id="brojevi"></p>
+    <button onclick="prikaziBrojeve()">Ukloni neke brojeve</button>
+    <script>
+        //NIZ
+        const nizBrojeva = [23, 34, 12, 13,  -23, 4, 7, -123];
+
+        function prikaziBrojeve(){
+            let paragraf = document.getElementById("brojevi");
+            const lokalniNiz = ukloniBrojeve(input => input % 2 == 0);
+            paragraf.innerHTML = lokalniNiz;
+        }
+
+        function ukloniBrojeve(testCallback){
+            const noviNiz = [];
+            for(const broj of nizBrojeva){
+                if(testCallback(broj)){
+                    noviNiz.push(broj);
+                }
+            }
+            return noviNiz;
+        }
+
+        // broj => broj>=0;
+        function testirajBroj(broj){
+            return broj>=0;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+        <h1>JavaScript CALLBACK funkcije</h1>
+        <p>
+            <ul>
+                Funkcije se izvršavaju 
+                <li>onako kako su DEFINIRANE</li>
+                <li><b>onako kako su POZVANE</b></li>
+            </ul>
+        </p>
+        <p id="resultirajuciParagraf"></p>
+        <h2 id="resultHeading"></h2>
+        <div id="resultDiv"></div>
+        <script>
+            function prikaziUParagrafu(value){
+                let paragraf = document.getElementById("resultirajuciParagraf");
+                paragraf.innerHTML=value+" u paragrafu";
+            }
+    
+        
+
+            function prikaziUHeading(value){
+                let heading = document.getElementById("resultHeading");
+                heading.innerHTML=value + " u h2 elementu";
+            }
+
+            function prikaziUDiv(value){
+                let div = document.getElementById("resultDiv");
+                div.innerHTML=value+" u DIV elementu";
+            }
+
+            function sum(broj1, broj2, myCallback){
+                let suma = broj1 + broj2;
+                console.log("SUMA " + suma);
+                myCallback(suma);
+            }
+
+            sum(23, 34, prikaziUParagrafu);
+            sum(34, 45, prikaziUHeading);
+            sum(100, 200, prikaziUDiv);
+
+         </script>
+</body>
+</html>
