@@ -4,9 +4,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Paint APP</title>
+    <link rel="stylesheet" href="paint.css"/>
+    <script src="paint.js" defer></script>
 </head>
 <body>
-    
+    <div id="platno" onmousemove="crtajNaKoordinatama(event)" onmousedown="pocniCrtanje(event)" onmouseup="prestaniCrtanje(event)">
+
+    </div>
+    <p style="display:inline"> Izaberi boju linije</p>
+    <input id="boja" type="color">
+    <br/>
+    <br/>
+    <p style="display:inline">Izaberi debljinu linije</p>
+    <input id="deb" type="range" name="" min="2" max="18"/>
+    <br/>
+    <br/>
+    <p style="display: inline;">Izaberi tip linije</p>
+    <button id="krug" onclick="krug()">Krug</button>
+    <button id="kvadrat" onclick="kvadrat()">Kvadrat</button>
 </body>
 </html>
